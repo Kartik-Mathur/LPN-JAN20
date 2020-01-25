@@ -9,23 +9,14 @@ void PrintArray(int arr[],int n){
 		cout<<arr[i]<<' ';
 	}
 	cout<<endl;	
-
 }
-
 int main(){
-
 	int a[]={5,4,3,6,8,7,1};
-	
 	int n = sizeof(a)/sizeof(int);
-
-
 	PrintArray(a,n);
-	
 	for(int i=0;i<n;i++){
 		cout<<a[i]<<' ';
 	}
 	cout<<endl;	
-
-
 	return 0;
 }
