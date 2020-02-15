@@ -4,17 +4,22 @@ using namespace std;
 
 void SpiralPrint(int a[][100],int r,int c){
 	int sr = 0, sc = 0, er = r-1, ec = c-1;
+
 	while(sr<=er && sc<=ec){
+		
 		//Print sr from sc till ec
+
 		for(int col = sc;col<=ec;col++){
 			cout<<a[sr][col]<<' ';
 		}
 		sr++;
+
 		// Print ec from sr till er
 		for(int row = sr;row<=er;row++){
 			cout<<a[row][ec]<<' ';
 		}
 		ec--;
+		
 		// Print er from ec till sc
 		if(sr<er){
 			for(int col=ec;col>=sc;col--){
