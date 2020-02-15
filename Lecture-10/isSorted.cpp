@@ -4,7 +4,7 @@ using namespace std;
 
 bool isSorted(int *a,int n){
 	// Base case
-	if(n==0){
+	if(n==0||n==1){
 		return true;
 	}
 	// Recursive case
@@ -18,6 +18,7 @@ bool isSorted(int *a,int n){
 		return false;
 	}
 }
+
 
 int main(){
 	int a[]={1,2,3,4,5,6,7,8,9,8};
