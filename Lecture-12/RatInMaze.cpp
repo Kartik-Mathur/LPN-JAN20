@@ -36,6 +36,7 @@ bool RatInMaze(char maze[][5],int sol[10][10],int i,int j,int n,int m){
 	}
 
 	sol[i][j] = 0;
+	
 	return false;
 }
 
