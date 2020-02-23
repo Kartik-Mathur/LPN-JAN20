@@ -73,7 +73,9 @@ int mat[9][9] =
 	{0,0,0,4,1,9,0,0,5},
 	{0,0,0,0,8,0,0,7,9}};
 
-	SudokuSolver(mat,0,0,9);
+	if(SudokuSolver(mat,0,0,9) == false){
+		cout<<"Cannot Be solved"<<endl;
+	}
 
 
 	return 0; 
