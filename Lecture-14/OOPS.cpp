@@ -29,9 +29,8 @@ public:
 	// 3. Copy Constructor
 	Car(Car &X){
 		cout<<"In Copy Constructor"<<endl;
-		// name = new char[strlen(X.name)+1];
-		// strcpy(name,X.name);
-		name = X.name;
+		name = new char[strlen(X.name)+1];
+		strcpy(name,X.name);
 		price = X.price;
 		model = X.model;
 	}
