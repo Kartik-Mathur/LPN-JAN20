@@ -73,7 +73,62 @@ void InsertAtMid(node* &head,node* &tail,int data,int pos){
 	temp->next = n;
 }
 
+node* SearchLL(node *head,int key){
 
+	while(head){
+		if(head->data == key){
+			return head;
+		}
+		head=head->next;
+	}
+	return NULL; // or return head; as head == NULL
+}
+
+node *SearchRecursively(node* head,int key){
+	// Base case
+	if(head == NULL){
+		return NULL;
+	}
+	// Recursive case
+	if(head->data == key){
+		return head;
+	}
+	else{
+		return SearchRecursively(head->next,key);
+	}
+}
+
+void DeleteAtFront(node* &head,node* &tail){
+	if(head == NULL){
+		return;
+	}
+	if(head->next == NULL){
+		delete head;
+		head = tail = NULL;
+		return;
+	}
+	node* temp = head;
+	head = head->next;
+	delete temp;
+}
+
+void DeleteAtEnd(node* &head,node* &tail){
+	if(head == NULL){
+		return;
+	}
+	if(head->next == NULL){
+		delete head;
+		head = tail = NULL;
+		return;
+	}
+	node * temp = head;
+	while(temp->next!=tail){
+		temp = temp->next;
+	}
+	delete tail;
+	temp->next = NULL;
+	tail = temp;
+}
 int main(){
 
 	node* head=NULL,*tail=NULL;
@@ -82,17 +137,37 @@ int main(){
 		InsertAtFront(head,tail,i);
 	}
 	Print(head);
-	cout<<"Length of LL "<<lengthofLL(head)<<endl;
+	// cout<<"Length of LL "<<lengthofLL(head)<<endl;
 	InsertAtEnd(head,tail,6);
 	Print(head);
-	cout<<"Length of LL "<<lengthofLL(head)<<endl;
-	InsertAtMid(head,tail,10,0);
+	DeleteAtEnd(head,tail);
 	Print(head);
-	InsertAtMid(head,tail,11,8);
+	DeleteAtFront(head,tail);
 	Print(head);
-	InsertAtMid(head,tail,12,4);
-	Print(head);
-
+	// cout<<"Length of LL "<<lengthofLL(head)<<endl;
+	// InsertAtMid(head,tail,10,0);
+	// Print(head);
+	// InsertAtMid(head,tail,11,8);
+	// Print(head);
+	// InsertAtMid(head,tail,12,4);
+	// Print(head);
+	int key;
+	// cout<<"Enter Key : ";
+	// cin>>key;
+	// node* ans = SearchLL(head,key);
+	// if(ans != NULL){
+	// 	cout<<"Key Found "<<ans->data<<endl;
+	// }
+	// else{
+	// 	cout<<"Key Not Found "<<endl;
+	// }
+	// ans = SearchRecursively(head,key);
+	// if(ans != NULL){
+	// 	cout<<"Key Found "<<ans->data<<endl;
+	// }
+	// else{
+	// 	cout<<"Key Not Found "<<endl;
+	// }
 
 	return 0; 
 }
