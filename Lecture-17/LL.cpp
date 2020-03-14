@@ -84,6 +84,57 @@ node* mergeSortLL(node* head){
 	return newhead;
 }
 
+int lengthofLL(node *head){
+	int count = 0;
+	while(head){
+
+		count++;
+		head = head->next;
+	}
+	return count;
+}
+
+void BubbleSortLL(node* &head){
+
+
+	node* curr,*prev,*n;
+
+	int n1 = lengthofLL(head);
+
+	for(int i = 0;i<=n1-2;i++){
+
+		curr = head;
+		prev = NULL;
+
+		while(curr && curr->next){
+			n = curr->next;
+
+			if(curr->data>n->data){
+				// Swapping hogi
+				if(prev == NULL){
+					// Head change hoga
+					curr->next = n->next;
+					n->next = curr;
+					head = prev = n;
+				}
+				else{
+					// Head change nahi hoga
+					curr->next = n->next;
+					n->next = curr;
+					prev->next = n;
+					prev = n;
+				}
+
+			}
+			else{
+				// Swapping nahi hogi
+				prev = curr;
+				curr = n;
+			}
+		}
+	}
+}
+
 
 int main(){
 	node* head = NULL;
@@ -97,9 +148,10 @@ int main(){
 	InsertAtFront(head,0);
 	InsertAtFront(head,3);
 	InsertAtFront(head,1);
+	InsertAtFront(head,10);
 	PrintLL(head);
-	head = mergeSortLL(head);
-
+	// head = mergeSortLL(head);
+	BubbleSortLL(head);
 	// InsertAtFront(head1,10);
 	// InsertAtFront(head1,9);
 	// InsertAtFront(head1,6);
