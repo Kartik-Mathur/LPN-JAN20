@@ -95,17 +95,11 @@ int lengthofLL(node *head){
 }
 
 void BubbleSortLL(node* &head){
-
-
 	node* curr,*prev,*n;
-
 	int n1 = lengthofLL(head);
-
 	for(int i = 0;i<=n1-2;i++){
-
 		curr = head;
 		prev = NULL;
-
 		while(curr && curr->next){
 			n = curr->next;
 
