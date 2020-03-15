@@ -1,59 +1,17 @@
 // LinkedList_Stack
 #include<iostream> 
+#include "Stack.h"
 using namespace std;
 
-class node{
-public:
-	int data;
-	node* next;
-	node(int d){
-		data = d;
-		next = NULL;
-	}
-};
-
-class Stack{
-	node* head;
-public:
-	Stack(){
-		head = NULL;
-	}
-
-	void push(int d){
-		if(head == NULL){
-			head = new node(d);
-			return;
-		}
-		node* n = new node(d);
-		n->next = head;
-		head = n;
-	}
-
-	void pop(){
-		if(head == NULL){
-			return;
-		}
-		node* temp = head;
-		head = head->next;
-		delete temp;
-	}
-
-	bool empty(){
-		return head == NULL;
-	}
-
-	int top(){
-		return head->data;
-	}
-};
-
 int main(){
-	Stack s;
+	// stack<char> s;
+	Stack<char> s;
 	
-	s.push(1);
-	s.push(2);
-	s.push(3); 
-	s.push(4); 
+	s.push('A');
+	s.push('B');
+	s.push('C'); 
+	s.push('D'); 
+	s.push('E'); 
 
 	while(!s.empty()){ 
 		cout<<s.top()<<" "; 
