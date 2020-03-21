@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 	// stack<char> s;
-	Stack<char> s;
+	Stack<int> s;
 	
 	s.push('A');
 	s.push('B');
