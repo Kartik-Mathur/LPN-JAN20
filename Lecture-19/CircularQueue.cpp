@@ -36,7 +36,7 @@ public:
 			cout<<"Underflow"<<endl;
 		}
 	}
-
+	
 	bool empty(){
 		return cs == 0;
 	}
@@ -48,7 +48,6 @@ public:
 	int front(){
 		return arr[f];
 	}
-
 };
 
 int main(){
