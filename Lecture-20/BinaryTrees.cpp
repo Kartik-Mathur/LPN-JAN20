@@ -150,7 +150,6 @@ node* SearchRecursively(node* root,int key){
 }
 
 void LevelOrder(node* root){
-
 	queue<node*> q;
 
 	q.push(root);
@@ -178,9 +177,66 @@ void LevelOrder(node* root){
 	}
 }
 
-int main(){
+node* createTreeLevelOrder(){
+	cout<<"Enter root node ";
+	int data;
+	cin>>data;
+	node* root = new node(data);
 
-	node* root = CreateBT();
+	queue<node*> q;
+	q.push(root);
+
+	while(!q.empty()){
+		node* n = q.front();
+		q.pop();
+
+		cout<<"Enter childrens of "<<n->data<<endl;
+		int c1,c2;
+		cin>>c1>>c2;
+
+		if(c1!=-1){
+			n->left= new node(c1);
+			q.push(n->left);
+		}
+		if(c2!=-1){
+			n->right = new node(c2);
+			q.push(n->right);
+		}
+	}
+	return root;
+}
+
+int pre[]={8,10,1,6,4,7,3,14,13};
+int in[]={1,10,4,6,7,8,3,13,14};
+int indx = 0;
+
+node* BuildTree(int s,int e){
+	// Base case
+	if(s>e){
+		return NULL;
+	}
+
+	// Recursive case
+	int val = pre[indx++];
+	node* root = new node(val);
+	int k = -1;
+	for(int j=s;j<=e;j++){
+		if(in[j] == val){
+			k = j;
+			break;
+		}
+	}
+
+	root->left = BuildTree(s,k-1);
+	root->right = BuildTree(k+1,e);
+	return root;
+}
+
+
+int main(){
+	int n = sizeof(in)/sizeof(int);
+	
+	node* root = BuildTree(0,n-1);
 	
 	// mirrorTree(root);
 
