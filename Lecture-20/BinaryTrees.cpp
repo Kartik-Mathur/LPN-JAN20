@@ -1,5 +1,6 @@
 // BinaryTree
 #include<iostream> 
+#include <queue>
 using namespace std;
 
 class node{
@@ -119,10 +120,69 @@ Pair fastDiameter(node* root){
 	return p;
 }
 
+void mirrorTree(node* root){
+	// Base case
+	if(root == NULL){
+		return;
+	}
+
+	mirrorTree(root->left);
+	mirrorTree(root->right);
+	swap(root->left,root->right);
+
+}
+
+node* SearchRecursively(node* root,int key){
+	if(root == NULL){
+		return NULL;
+	}
+
+	if(root->data == key){
+		return root;
+	}
+
+	node* ans = SearchRecursively(root->left,key);
+	if(ans!=NULL){
+		return ans;
+	}
+	ans = SearchRecursively(root->right,key);
+	return ans;
+}
+
+void LevelOrder(node* root){
+
+	queue<node*> q;
+
+	q.push(root);
+	q.push(NULL);
+
+	while(!q.empty()){
+		node* n = q.front();
+		q.pop();
+
+		if( n == NULL ){
+			cout<<endl;
+			if(!q.empty()){
+				q.push(NULL);
+			}
+		}
+		else{
+			cout<<n->data<<" ";
+			if(n->left){
+				q.push(n->left);
+			}
+			if(n->right){
+				q.push(n->right);
+			}
+		}
+	}
+}
 
 int main(){
 
 	node* root = CreateBT();
+	
+	// mirrorTree(root);
 
 	preorder(root);
 	cout<<endl;
@@ -134,10 +194,20 @@ int main(){
 	cout<<"Height of Tree : "<<heightTree(root)<<endl;
 	cout<<"diameter of Tree : "<<diameter(root)<<endl;
 
-	Pair ans = fastDiameter(root);
-	cout<<"Fast Height : "<<ans.height<<endl;
-	cout<<"Fast Diameter : "<<ans.diameter<<endl;
+	// Pair ans = fastDiameter(root);
+	// cout<<"Fast Height : "<<ans.height<<endl;
+	// cout<<"Fast Diameter : "<<ans.diameter<<endl;
 
+	int key;
+	cin>>key;
+	node* ans = SearchRecursively(root,key);
+	if(ans == NULL){
+		cout<<"Not Found"<<endl;
+	}
+	else{
+		cout<<ans->data<<endl;
+	}
+	LevelOrder(root);
 
 	return 0; 
 }
