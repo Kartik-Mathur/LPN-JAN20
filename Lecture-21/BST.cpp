@@ -176,7 +176,6 @@ LinkedList BSTtoLL(node* root){
 		l.head = l.tail = NULL;
 		return l;
 	}
-
 	// Recursive case
 	if(root->left ==NULL && root->right ==NULL){
 		l.head = l.tail = root;
@@ -201,7 +200,6 @@ LinkedList BSTtoLL(node* root){
 		l.head = left.head;
 		l.tail = right.tail;
 	}
-
 	return l;
 }
 
