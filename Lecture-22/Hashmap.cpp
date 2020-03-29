@@ -27,7 +27,7 @@ class Hashmap{
 		arr = new node*[2*ts];
 		ts *= 2;
 		cs = 0;
-		
+
 		for(int i=0;i<ts;i++){
 			arr[i] = NULL;
 		}
@@ -80,7 +80,38 @@ public:
 		}
 	}
 
+	node* search(string key){
+		int i = hashFn(key);
+		node* head = arr[i];
+		while(head){
+			if(head->key == key){
+				return head;
+			}
+			head=head->next;
+		}
+		return NULL;
+	}
 
+	int& operator[](string key){
+		node* ans = search(key);
+		if(ans){
+			// Exists
+			return ans->data;
+		}
+		else{
+			// Doesnot exists
+			int garbage_value;
+			insert(key,garbage_value);
+			ans = search(key);
+			return ans->data;
+		}
+	}
+
+	void Delete(string key){
+		// homework
+		int i = hashFn(key);
+		node* head = arr[i];
+	}
 };
 
 
@@ -93,9 +124,26 @@ int main(){
 	h.insert("Banana",50);
 	h.insert("Kiwi",80);
 	h.insert("Guava",60);
+	h["Pineapple"] = 250; // Insertion
 
 	h.Print();
 
+	cout<<h["Mango"]<<endl; // Search
+	h["Mango"] = 200; // This will acutally update the bucket of hashmap
+	// Updation
+	cout<<h["Mango"]<<endl;
+
+	// string key;
+	// while(true){
+	// 	cin>>key;
+	// 	node* ans = h.search(key);
+	// 	if(ans){
+	// 		cout<<"Found "<<ans->key<<endl;
+	// 	}
+	// 	else{
+	// 		cout<<"Not Found"<<endl;
+	// 	}
+	// }
 
 	return 0;
 }
