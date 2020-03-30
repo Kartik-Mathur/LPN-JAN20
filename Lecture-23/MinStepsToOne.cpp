@@ -43,7 +43,26 @@ int topDown(int n,int *dp){
 	int ans = min(op1,min(op2,op3))+1;
 	dp[n] = ans;
 	return ans;
-}	
+}
+
+int bottomUp(int n){
+	int* dp = new int[n+1];
+	dp[1] = 0;
+
+	for(int i=2;i<=n;i++){
+		int op1=INT_MAX,op2=INT_MAX,op3=INT_MAX;
+		op1 = dp[i-1];
+		if(i%2 == 0){
+			op2 = dp[i/2];
+		}
+		if(i%3 == 0){
+			op3 = dp[i/3];
+		}
+		dp[i] = min(op1,min(op2,op3))+1;
+	}
+
+	return dp[n];
+}
 
 int main(){
 	int n;
@@ -53,8 +72,9 @@ int main(){
 	for(int i=0;i<=n;i++){
 		dp[i] = -1;
 	}
-	
+
 	cout<<topDown(n,dp)<<endl;
+	cout<<bottomUp(n)<<endl;
 	cout<<MinStepsToOne(n)<<endl;
 
 	return 0;
