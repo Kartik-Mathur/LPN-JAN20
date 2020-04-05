@@ -72,19 +72,5 @@ int main(){
 	cout<<topDown(price,weight,4,6,dp)<<endl;
 	cout<<bottomUp(price,weight,4,6)<<endl;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	return 0;
 }
